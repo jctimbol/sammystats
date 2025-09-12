@@ -3,6 +3,9 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { fetchAdmissions } from './utils/api';
 import AdmissionGraph from './components/AdmissionGraph';
+import MajorSelector from './components/MajorSelector';
+import DataTable from './components/DataTable';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [data, setData] = useState([]);
@@ -18,23 +21,12 @@ function App() {
   const major = data[0].major;
  
   return (
+
   <div>
+    <MajorSelector data={data}/>
     <h1>{major}</h1>
      <AdmissionGraph data={data}/>
-    <ul>
-      {data.map(row => {
-        const admitRate = 
-        row.num_admits && row.num_applicants
-            ? ((row.num_admits / row.num_applicants) * 100).toFixed(1) + '%'
-            : 'N/A'; // if missing data
-
-            return (
-              <li key={row.id}>
-                {row.year}: {admitRate}
-              </li>
-            )
-      })}
-    </ul>
+      <DataTable data={data}/>
   </div>
   );
 }

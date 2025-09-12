@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+table {
+  table-layout: fixed;
+  border: 2px solid black;
+  width: 50%;
+  text-align:center;
+   border-collapse: collapse;
+   margin: auto;
+}
+th, td {
+  border: 1px solid grey;
+}
