@@ -16,8 +16,6 @@ export async function fetchAdmissions() {
         console.error('Error fetching admissions:', error);
         return [];
     }
-    else {
-        console.log(data);
-    }
+    
     return data;
 }
