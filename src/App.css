@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -43,7 +44,6 @@ table {
   width: 50%;
   text-align:center;
    border-collapse: collapse;
-   margin: auto;
 }
 th, td {
   border: 1px solid grey;

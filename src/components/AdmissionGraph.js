@@ -1,6 +1,8 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-export default function AdmissionGraph({data}) {
+export default function AdmissionGraph(props) {
+    const {data, major} = props;
+
     const chartData = data.map(row => ({
         year: row.year,
         admitRate:
@@ -8,9 +10,11 @@ export default function AdmissionGraph({data}) {
             ? (row.num_admits / row.num_applicants) * 100
             : null,
     }));
-
     return (
-        <LineChart width={600} height={300} data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+        <div>
+            <h1>Admission Data for {major}</h1>
+        <LineChart width={600} height={300} data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5}}>
+            
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="year" />
             <YAxis domain={[0, 100]} unit="%" />
@@ -23,6 +27,8 @@ export default function AdmissionGraph({data}) {
             activeDot={{ r: 8 }}
             connectNulls
         />
+        
         </LineChart>
+        </div>
     );
 } 
