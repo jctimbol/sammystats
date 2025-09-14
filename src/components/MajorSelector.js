@@ -2,6 +2,13 @@ import Select from 'react-select';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const menuStyles = {
+    control: (provided) => ({
+        ...provided,
+        width: '50%',
+        margin: 'auto',
+    }),
+};
 
 const MajorSelector = ({data}) => {
     
@@ -11,7 +18,7 @@ const MajorSelector = ({data}) => {
     const navigate = useNavigate();
     
     const handleButtonClick = () => {
-        navigate(`/data`);
+        navigate(`/data/${encodeURIComponent(selectedOption.value)}`);
     }
 
     return (
@@ -22,6 +29,7 @@ const MajorSelector = ({data}) => {
                 value={selectedOption}
                 isSearchable
                 placeholder="search for major"
+                styles={menuStyles}
             />
             <button onClick={handleButtonClick}>get admission data!</button>
          </div>
